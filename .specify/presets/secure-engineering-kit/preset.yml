@@ -1,0 +1,86 @@
+schema_version: "1.0"
+
+preset:
+  id: "secure-engineering-kit"
+
+  name: "Secure Engineering Kit"
+
+  version: "1.0.0"
+
+  description: "Preset para Spec Kit con gobierno mediante Constitution y desarrollo seguro basado en OWASP, WSTG y MASVS."
+
+  author: "fmiranda"
+
+  repository: "https://github.com/<tu-org>/secure-spec-kit"
+
+  license: "MIT"
+
+requires:
+  speckit_version: ">=0.1.0"
+
+provides:
+  templates:
+
+    # Plantillas
+    - type: "template"
+      name: "constitution-template"
+      file: "templates/constitution-template.md"
+      description: "Plantilla de constitución con gobierno del repositorio."
+      replaces: "constitution-template"
+
+    - type: "template"
+      name: "spec-template"
+      file: "templates/spec-template.md"
+      description: "Plantilla de especificación funcional con requisitos de seguridad."
+      replaces: "spec-template"
+
+    - type: "template"
+      name: "plan-template"
+      file: "templates/plan-template.md"
+      description: "Plantilla de planificación técnica y arquitectura."
+      replaces: "plan-template"
+
+    - type: "template"
+      name: "tasks-template"
+      file: "templates/tasks-template.md"
+      description: "Plantilla de tareas con trazabilidad de requisitos."
+      replaces: "tasks-template"
+
+    # Comandos
+
+    - type: "command"
+      name: "speckit.constitution"
+      file: "commands/speckit.constitution.md"
+      description: "Actualiza la constitución y sincroniza los artefactos."
+      replaces: "speckit.constitution"
+
+    - type: "command"
+      name: "speckit.specify"
+      file: "commands/speckit.specify.md"
+      description: "Genera especificaciones funcionales alineadas con la constitución."
+      replaces: "speckit.specify"
+
+    - type: "command"
+      name: "speckit.plan"
+      file: "commands/speckit.plan.md"
+      description: "Genera el plan técnico y la arquitectura."
+      replaces: "speckit.plan"
+
+    - type: "command"
+      name: "speckit.tasks"
+      file: "commands/speckit.tasks.md"
+      description: "Descompone el plan en tareas implementables."
+      replaces: "speckit.tasks"
+
+    - type: "command"
+      name: "speckit.implement"
+      file: "commands/speckit.implement.md"
+      description: "Implementa las tareas respetando la constitución y el plan."
+      replaces: "speckit.implement"
+
+tags:
+  - "security"
+  - "owasp"
+  - "spec-kit"
+  - "governance"
+  - "secure-development"

@@ -1,0 +1,29 @@
+schema_version: "1.0"
+
+extension:
+  id: git-branch
+  name: "Git Branch Creator"
+  version: "1.0.0"
+  description: "Automatically creates and switches to a new git branch before feature specification"
+  author: "Olimpia Team"
+  license: MIT
+
+requires:
+  speckit_version: ">=0.2.0"
+
+provides:
+  commands:
+    - name: git.create-branch
+      file: commands/create-branch.md
+      description: "Create and switch to a new git branch for the feature"
+
+hooks:
+  before_specify:
+    command: git.create-branch
+    optional: false
+    description: "Create git branch before specification"
+
+tags:
+  - "git"
+  - "branch"
+  - "workflow"

@@ -1,0 +1,33 @@
+installed:
+- agent-context
+- git-branch
+settings:
+  auto_execute_hooks: true
+hooks:
+  before_specify:
+  - extension: git-branch
+    command: git.create-branch
+    enabled: true
+    optional: false
+    priority: 10
+    prompt: Create git branch for this feature?
+    description: Create and switch to a new git branch before specification
+    condition: null
+  after_specify:
+  - extension: agent-context
+    command: speckit.agent-context.update
+    enabled: true
+    optional: true
+    priority: 10
+    prompt: Execute speckit.agent-context.update?
+    description: Refresh agent context after specification
+    condition: null
+  after_plan:
+  - extension: agent-context
+    command: speckit.agent-context.update
+    enabled: true
+    optional: true
+    priority: 10
+    prompt: Execute speckit.agent-context.update?
+    description: Refresh agent context after planning
+    condition: null

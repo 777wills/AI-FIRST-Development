@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Olimpia IT",
+  "classifications": [ "Web API", "Clean Architecture", ".NET 10", "CQRS" ],
+  "identity": "OlimpiaIT.CleanApi.Template.1.0",
+  "name": "Olimpia IT — Clean Architecture Web API",
+  "shortName": "olimpia-cleanapi",
+  "description": "Template REST API con Clean Architecture, CQRS (Cortex.Mediator), SqlKata+Dapper, GenericRepository, Token Relay y Logger personalizado.",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": false,
+
+  "symbols": {
+
+    "OrgName": {
+      "type": "parameter",
+      "datatype": "string",
+      "description": "Nombre de la organización en PascalCase (ej: Olimpia, MiEmpresa). Primer segmento del namespace.",
+      "isRequired": true
+    },
+
+    "ProjectName": {
+      "type": "parameter",
+      "datatype": "string",
+      "description": "Nombre del proyecto en PascalCase (ej: Inventario, Facturacion). Segundo segmento del namespace.",
+      "isRequired": true
+    },
+
+    "IncludeExamples": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Incluir CRUD de Products como ejemplo funcional. Use --IncludeExamples false para un proyecto vacío.",
+      "defaultValue": "true"
+    },
+
+    "orgNameLower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "OrgName",
+        "toLower": true
+      }
+    },
+
+    "projectNameLower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "ProjectName",
+        "toLower": true
+      }
+    },
+
+    "FullProjectPrefix": {
+      "type": "generated",
+      "generator": "join",
+      "parameters": {
+        "symbols": [
+          { "type": "ref",   "value": "OrgName" },
+          { "type": "const", "value": "." },
+          { "type": "ref",   "value": "ProjectName" }
+        ]
+      },
+      "replaces": "Olimpia",
+      "fileRename": "Olimpia"
+    },
+
+    "fullPrefixKebab": {
+      "type": "generated",
+      "generator": "join",
+      "parameters": {
+        "symbols": [
+          { "type": "ref",   "value": "orgNameLower" },
+          { "type": "const", "value": "-" },
+          { "type": "ref",   "value": "projectNameLower" }
+        ]
+      },
+      "replaces": "olimpia-template"
+    },
+
+    "fullPrefixUnderscore": {
+      "type": "generated",
+      "generator": "join",
+      "parameters": {
+        "symbols": [
+          { "type": "ref",   "value": "OrgName" },
+          { "type": "const", "value": "_" },
+          { "type": "ref",   "value": "ProjectName" }
+        ]
+      },
+      "replaces": "OlimpiaPrefix"
+    }
+
+  },
+
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        ".template.config/**",
+        "TEMPLATE_README.md",
+        "**/bin/**",
+        "**/obj/**",
+        "**/.vs/**",
+        "**/*.user",
+        ".env",
+        ".env.local",
+        "logs/**",
+        "**/logs/**",
+        "**/TestResults/**",
+        ".git/**"
+      ],
+      "modifiers": [
+        {
+          "condition": "(!IncludeExamples)",
+          "exclude": [
+            "src/**/Products/**",
+            "src/**/Entities/Product.cs",
+            "src/**/Repositories/IProductRepository.cs",
+            "src/**/Repositories/ProductRepository.cs",
+            "src/**/Controllers/V1/ProductController.cs",
+            "tests/**/Handlers/Products/**",
+            "tests/**/Validators/**/*Product*",
+            "tests/**/Repositories/**/*Product*",
+            "tests/**/Repositories/**/GenericRepositoryRetryDecoratorTests.cs",
+            "tests/**/Fixtures/**/Product*",
+            "scripts/sql/001_create_products_table.sql"
+          ]
+        }
+      ]
+    }
+  ]
+}

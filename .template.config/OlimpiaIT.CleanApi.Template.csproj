@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageId>OlimpiaIT.CleanApi.Template</PackageId>
+    <PackageVersion>2.0.0</PackageVersion>
+    <Title>Olimpia IT — Clean Architecture Web API Template</Title>
+    <Authors>Olimpia IT</Authors>
+    <Description>Template REST API con Clean Architecture, CQRS (Cortex.Mediator), Dapper+SqlKata, GenericRepository, Token Relay y Logger personalizado.
+
+📖 Documentación completa: ver el enlace en https://dev.azure.com/olimpiait/SICOV%202.0/_git/BaseApi?path=/TEMPLATE_README.md
+
+🚀 Instalación rápida:
+dotnet new install OlimpiaIT.CleanApi.Template --nuget-source "https://pkgs.dev.azure.com/olimpiait/9fc7cbdd-2938-4c6e-be8b-989e9e378132/_packaging/sicovii/nuget/v3/index.json" --interactive
+
+📦 Crear proyecto:
+dotnet new olimpia-cleanapi --OrgName MiEmpresa --ProjectName MiProyecto
+
+Incluye: Clean Architecture 4 capas, CQRS con Cortex.Mediator, Dapper+SqlKata, JWT Bearer (OpenIddict), Redis Cache, LogCentral, FluentValidation, paginación/filtrado/ordenamiento, 16 agentes GitHub Copilot y documentación técnica completa.</Description>
+    <PackageTags>dotnet-new;template;webapi;clean-architecture;cqrs;dapper;sqlkata</PackageTags>
+    <PackageProjectUrl>https://dev.azure.com/olimpiait/SICOV%202.0/_git/BaseApi?path=/TEMPLATE_README.md</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>v2.0.0 — Mejoras Gateway y correcciones Swagger:
+- Gateway: split de configuración Ocelot en Configuration/ (un archivo por servicio downstream)
+- Gateway: URLs downstream externalizadas en appsettings.json via MMLib.Ocelot.Provider.AppConfiguration
+- Gateway: JWT passthrough configurable (AllowAutenticationValidator), CORS y feature flags
+- Gateway: UseAuthentication + UseAuthorization y AuthenticationProviderKeys (Ocelot v23+ API)
+- Swagger: corregido OpenApiSecuritySchemeReference para pasar 'document' (Swashbuckle 10 / OpenApi v2)
+- Swagger: corregida clave de configuración Jwt:Providers:0:Authority en descripción del Bearer
+- Docs: eliminado fragmento de código single-provider obsoleto de AUTHENTICATION.md
+- Docs: actualizados ejemplos de configuración JWT a patrón multi-proveedor en CONFIGURATION.md</PackageReleaseNotes>
+    <TargetFramework>net10.0</TargetFramework>
+
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <NoWarn>$(NoWarn);NU5128;NU5110;NU5111;NU5118</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Package README (se muestra en Azure Artifacts / NuGet.org) -->
+    <None Include="..\TEMPLATE_README.md" Pack="true" PackagePath="README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Template config -->
+    <Content Include="template.json" PackagePath="content/.template.config/" />
+
+    <!-- Source code -->
+    <Content Include="..\src\**" Exclude="..\src\**\bin\**;..\src\**\obj\**" PackagePath="content/src/" Link="src/%(RecursiveDir)%(Filename)%(Extension)" />
+
+    <!-- Tests -->
+    <Content Include="..\tests\**" Exclude="..\tests\**\bin\**;..\tests\**\obj\**;..\tests\**\TestResults\**" PackagePath="content/tests/" Link="tests/%(RecursiveDir)%(Filename)%(Extension)" />
+
+    <!-- Documentation and support files -->
+    <Content Include="..\docs\**" PackagePath="content/docs/" Link="docs/%(RecursiveDir)%(Filename)%(Extension)" />
+    <Content Include="..\scripts\**" PackagePath="content/scripts/" Link="scripts/%(RecursiveDir)%(Filename)%(Extension)" />
+    <Content Include="..\specs\**" PackagePath="content/specs/" Link="specs/%(RecursiveDir)%(Filename)%(Extension)" />
+    <Content Include="..\pull-requests\**" PackagePath="content/pull-requests/" Link="pull-requests/%(RecursiveDir)%(Filename)%(Extension)" />
+    <Content Include="..\.github\**" PackagePath="content/.github/" Link=".github/%(RecursiveDir)%(Filename)%(Extension)" />    <Content Include="..\.specify\**" PackagePath="content/.specify/" Link=".specify/%(RecursiveDir)%(Filename)%(Extension)" />
+    <Content Include="..\.vscode\**" PackagePath="content/.vscode/" Link=".vscode/%(RecursiveDir)%(Filename)%(Extension)" />
+    <!-- Root files -->
+    <Content Include="..\.editorconfig" PackagePath="content/" />
+    <Content Include="..\.env.example" PackagePath="content/" />
+    <Content Include="..\.gitignore" PackagePath="content/" />
+    <Content Include="..\AI-FIRST-WORKFLOW.md" PackagePath="content/" />
+    <Content Include="..\Dockerfile" PackagePath="content/" />
+    <Content Include="..\nuget.config" PackagePath="content/" />
+    <Content Include="..\Olimpia.slnx" PackagePath="content/" />
+    <Content Include="..\README.md" PackagePath="content/" />
+  </ItemGroup>
+</Project>

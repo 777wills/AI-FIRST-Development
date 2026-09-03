@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "extensions": {
+    "agent-context": {
+      "version": "1.0.0",
+      "source": "local",
+      "manifest_hash": "sha256:9a1dc02d2d0139bb03860392ecacef79183be2c442feda2f9ccaa4e5907b1e47",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "copilot": [
+          "speckit.agent-context.update"
+        ]
+      },
+      "registered_skills": [],
+      "installed_at": "2026-06-30T17:09:43.662061+00:00"
+    },
+    "git-branch": {
+      "version": "1.0.0",
+      "source": "local",
+      "manifest_hash": "sha256:local-git-branch-extension",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "copilot": [
+          "git.create-branch"
+        ]
+      },
+      "registered_skills": [],
+      "installed_at": "2026-08-20T00:00:00.000000+00:00"
+    }
+  }
+}

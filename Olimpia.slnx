@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/1. Gateway/">
+    <Project Path="src/Olimpia.Api.Gateway/Olimpia.Api.Gateway.csproj" />
+  </Folder>
+  <Folder Name="/2. Api/">
+    <Project Path="src/Olimpia.Api/Olimpia.Api.csproj" />
+    <Project Path="src/Olimpia.Application/Olimpia.Application.csproj" />
+    <Project Path="src/Olimpia.Domain/Olimpia.Domain.csproj" />
+    <Project Path="src/Olimpia.Infrastructure/Olimpia.Infrastructure.csproj" />
+    <Project Path="tests/Olimpia.Tests/Olimpia.Tests.csproj" />
+  </Folder>
+</Solution>

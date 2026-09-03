@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "hooks": {
+    "SubagentStart": [
+      {
+        "type": "command",
+        "command": "./scripts/hooks/subagent-log.sh",
+        "linux": "./scripts/hooks/subagent-log.sh",
+        "osx": "./scripts/hooks/subagent-log.sh",
+        "windows": "powershell -ExecutionPolicy Bypass -File scripts\\hooks\\subagent-log.ps1",
+        "timeout": 5
+      }
+    ],
+    "SubagentStop": [
+      {
+        "type": "command",
+        "command": "./scripts/hooks/subagent-log.sh",
+        "linux": "./scripts/hooks/subagent-log.sh",
+        "osx": "./scripts/hooks/subagent-log.sh",
+        "windows": "powershell -ExecutionPolicy Bypass -File scripts\\hooks\\subagent-log.ps1",
+        "timeout": 5
+      }
+    ],
+    "PreToolUse": [
+      {
+        "type": "command",
+        "command": "./scripts/hooks/validate-command.sh",
+        "linux": "./scripts/hooks/validate-command.sh",
+        "osx": "./scripts/hooks/validate-command.sh",
+        "windows": "powershell -NoProfile -File scripts\\hooks\\validate-command.ps1",
+        "timeout": 15
+      }
+    ]
+  }
+}

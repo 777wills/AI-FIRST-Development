@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "presets": {
+    "secure-engineering-kit": {
+      "version": "1.0.0",
+      "source": "local",
+      "manifest_hash": "sha256:584ec8c40b616804a4b91aadb308cbc8cf67c47257cb2965e6f0a1a6a65c9fb8",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {},
+      "registered_skills": {
+        "copilot": [
+          "speckit-constitution",
+          "speckit-specify",
+          "speckit-plan",
+          "speckit-tasks",
+          "speckit-implement"
+        ]
+      },
+      "installed_at": "2026-08-21T02:10:14.228511+00:00"
+    }
+  }
+}

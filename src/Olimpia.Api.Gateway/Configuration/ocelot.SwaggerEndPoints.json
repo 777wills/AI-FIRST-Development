@@ -1,0 +1,17 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "olimpia-api",
+      "Config": [
+        {
+          "Name": "Olimpia API",
+          "Version": "v1",
+          "Service": {
+            "Name": "OlimpiaApi",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
+    }
+  ]
+}
